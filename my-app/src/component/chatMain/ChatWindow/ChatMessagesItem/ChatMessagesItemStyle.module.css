@@ -1,0 +1,35 @@
+.Message__Body {
+  width: 300px;
+  height: auto;
+  margin: 20px 0px;
+}
+.Message_text {
+  padding: 5px 10px;
+  height: auto;
+  min-height: 30px;
+  background-color: #3674ff;
+  color: white;
+  font-size: 20px;
+  font-family: sans-serif;
+  border-top-left-radius: 15px;
+  border-bottom-right-radius: 25px;
+  word-wrap: break-word;
+}
+.Message_user {
+  margin-top: 5px;
+  color: black;
+  font-size: 20px;
+  font-family: sans-serif;
+}
+.UserOnline {
+  width: 250px;
+  height: 50px;
+  background-color: whitesmoke;
+  margin: 20px 10px 5px;
+  font-size: 20px;
+  font-family: sans-serif;
+  border-radius: 25px;
+  padding: 13px 10px;
+  overflow: hidden;
+}
+/*# sourceMappingURL=ChatMessagesItemStyle.module.css.map */

@@ -1,0 +1,49 @@
+.CreateRoomForm__Submit {
+  display: flex;
+  justify-content: center;
+}
+.CreateRoomForm__Input {
+  position: relative;
+  top: -20px;
+}
+.CreateRoomForm__Input label {
+  position: absolute;
+  top: 1px;
+  left: 2px;
+  font-size: 40px;
+  pointer-events: none;
+  font-family: sans-serif;
+  transition: all 0.4s ease;
+}
+.CreateRoomForm__Input input {
+  font-size: 40px;
+  font-family: sans-serif;
+  border: 0;
+  border-bottom: 1px solid crimson;
+  background-color: snow;
+  outline: 0;
+  position: relative;
+}
+.CreateRoomForm__Input input:focus ~ label,
+.CreateRoomForm__Input input:valid ~ label {
+  top: -30px;
+  left: -3px;
+  font-size: 20px;
+}
+.CreateRoomForm button {
+  border-radius: 10px;
+  font-size: 35px;
+  font-family: sans-serif;
+  background-color: #ba2624;
+  border: 1px solid crimson;
+  color: white;
+  width: 250px;
+  box-shadow: 1px 3px black;
+  position: relative;
+  left: -10px;
+}
+.CreateRoomForm button:hover {
+  transform: translate(0, 1px);
+  box-shadow: 1px 1px black;
+}
+/*# sourceMappingURL=CreateRoomFormStyles.module.css.map */

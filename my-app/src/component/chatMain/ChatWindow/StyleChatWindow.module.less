@@ -1,0 +1,110 @@
+.ChatWindow {
+  display: flex;
+  grid-area: ChatWindow;
+  min-height: 800px;
+  max-height: 800px;
+  justify-content: center;
+}
+
+.ChatWindow__Left {
+  width:300px;
+  min-height: inherit;
+  max-height: inherit;
+  background-color: #7da7f1;
+  overflow-y: auto;
+  overflow-x: hidden;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  border-radius: 10px;
+  padding-top: -20px;
+}
+
+.ChatWindow__Right{
+  display: flex;
+  flex-direction: column;
+  margin-left: 30px;
+  width:1200px;
+  min-height: inherit;
+  max-height: inherit;
+}
+
+.ChatWindow__Messages {
+  padding-left: 15px;
+  padding-top: -20px;
+  width:inherit;
+  height: 600px;
+  overflow-y: auto;
+  overflow-x: hidden;
+}
+
+.ChatWindow__SendMessage {
+  position: relative;
+  border-top: 1px solid #94a6f1;
+   width: inherit;
+   height: 100px;
+   padding: 10px;
+ }
+
+.ChatWindow__SendMessage textarea{
+  width: 400px;
+  height: 100px;
+  max-height: 100px;
+  resize: none;
+  overflow-y: auto;
+  font-size: 20px;
+}
+
+.ChatWindow__SendMessage button{
+  position: absolute;
+  margin-top: 50px;
+  margin-left: 10px;
+  width: 200px;
+  height: 50px;
+  background-color: #3674ff;
+  border: 0;
+  color: white;
+  border-radius: 5px;
+  font-size: 15px;
+  outline: none;
+  transition: all 0.3s ease;
+}
+
+.ChatWindow__SendMessage button:hover {
+  background-color: mediumblue;
+}
+
+.ChatWindow__Exit {
+  position: relative;
+  width:inherit;
+  border-bottom: 2px solid #94a6f1;
+  height: 50px;
+}
+.ChatWindow__X {
+  position: absolute;
+  width: 50px;
+  height: 50px;
+  right:0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+}
+.ChatWindow__X:after,
+.ChatWindow__X:before {
+  position: absolute;
+  width: 40px;
+  height: 10px;
+  background-color: black;
+  content:"";
+
+}
+
+.ChatWindow__X:after {
+  transform: rotate(45deg);
+}
+
+.ChatWindow__X:before {
+  transform: rotate(-45deg);
+}
+

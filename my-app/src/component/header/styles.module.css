@@ -1,0 +1,65 @@
+.header {
+  grid-area: header;
+  background: #ba2624;
+  min-height: 100px;
+  display: flex;
+  align-items: center;
+}
+.auth {
+  display: flex;
+  margin: 0;
+  padding: 10px;
+}
+.auth li {
+  display: flex;
+  text-decoration: none;
+  color: white;
+  padding: 2px;
+  font-family: sans-serif;
+  font-size: 40px;
+  list-style-type: none;
+  align-self: center;
+}
+.auth li a {
+  text-decoration: none;
+  color: white;
+}
+.header__Spoiler {
+  position: relative;
+  width: 50px;
+  height: 50px;
+}
+.header__Spoiler:after,
+.header__Spoiler:before {
+  position: absolute;
+  content: "";
+  top: 50%;
+  width: 25px;
+  height: 2px;
+  background: black;
+}
+.header__Spoiler:after {
+  transform: rotate(45deg);
+}
+.header__Spoiler:before {
+  margin-left: 16px;
+  transform: rotate(-45deg);
+}
+.header__Spoiler {
+  display: flex;
+  flex-direction: column;
+}
+.header__Spoiler .spoiler__items {
+  display: none;
+  position: absolute;
+  background: #ba2624;
+  top: 50px;
+  padding: 5px;
+  width: 200px;
+  left: -15px;
+}
+.header__Spoiler:hover .spoiler__items {
+  cursor: pointer;
+  display: inline-block;
+}
+/*# sourceMappingURL=styles.module.css.map */

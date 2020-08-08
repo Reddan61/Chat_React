@@ -1,0 +1,25 @@
+.area.errortext{
+    border:1px solid red;
+
+}
+
+.spanarea {
+    color:red;
+    font-size: 18px;
+   display: inline-block;
+    position: absolute;
+}
+
+.divArea {
+    position: relative;
+    margin-bottom: 27px;
+}
+
+
+/*.serverError {
+    color: red;
+    font-family: Arial;
+    font-size: 20px;
+    border: 1px solid red;
+}*/
+

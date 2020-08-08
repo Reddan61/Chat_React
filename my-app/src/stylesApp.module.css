@@ -1,0 +1,19 @@
+*,
+*:after,
+*:before {
+  box-sizing: border-box;
+}
+.body {
+  display: grid;
+  grid-template-areas: 'header' 'BodyChat';
+  grid-row-gap: 50px;
+}
+.option-enter {
+  opacity: 0;
+  transition: all 10s ease 0s;
+}
+.option-enter-done {
+  opacity: 1;
+  transition: all 10s ease 0s;
+}
+/*# sourceMappingURL=stylesApp.module.css.map */
