@@ -1,6 +1,7 @@
 import {ActionsTypes, ThunkActionType} from "./store";
 import {formDataLoginType} from "../Types/Types";
 import {stopSubmit} from "redux-form";
+import {authApi} from "../api/api";
 
 const CHECKAUTH = "CHECKAUTH";
 const LOGOUT = "LOGOUT";
@@ -36,16 +37,25 @@ let actionsAuth = {
 
 
 
-export const logOutThunk = (): ThunkActionType<actionsType> => {
+export const logOutThunk = (name:string): ThunkActionType<actionsType> => {
     return async (dispatch) => {
-        dispatch(actionsAuth.logOutAC());
+        let response = await authApi.deleteUserName(name);
+        if(response.responseCode === 0) {
+            dispatch(actionsAuth.logOutAC());
+        }
     }
 };
 
 
 export const registerUserThunk = ({Name:userName}: formDataLoginType): ThunkActionType<actionsType | ReturnType<typeof stopSubmit>> => {
     return async (dispatch) => {
-        dispatch(actionsAuth.checkAuth(userName));
+        let response = await authApi.checkUserName(userName);
+        if(response.responseCode === 0) {
+            dispatch(actionsAuth.checkAuth(userName));
+        }
+        else {
+            dispatch(stopSubmit('register', {_error: response.error}))
+        }
     };
 };
 

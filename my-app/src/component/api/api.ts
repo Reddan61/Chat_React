@@ -20,3 +20,15 @@ export const roomsAPI = {
     }
 };
 
+export const authApi = {
+    checkUserName: (name: string) => {
+        return instance.post<authCheckUserNameType>("auth/checkUserName", {name}).then(response => response.data)
+    },
+    deleteUserName: (name: string) => {
+        return instance.post<{responseCode:number}>("auth/deleteUserName", {name}).then(response => response.data)
+    }
+};
+
+type authCheckUserNameType = {
+    responseCode: number, error?: string
+}

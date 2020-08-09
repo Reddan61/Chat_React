@@ -3,7 +3,7 @@ const express = require('express');
 /*const authRoutes = require('./routes/auth');
 const passport = require('passport');*/
 const roomsRoutes = require("./routes/rooms");
-
+const authRoutes = require("./routes/auth");
 const app = express();
 const bodyParser = require('body-parser');
 const cors = require('cors');
@@ -15,6 +15,7 @@ const io = require('socket.io')(http);
 
 
 let roomMethods = require("./models/rooms");
+let userOnlineMethods = require("./models/usersOnline");
 
 /*
 mongoose.connect(keys.mongoURI, {
@@ -46,6 +47,8 @@ app.use(bodyParser.json());
 
 //localhost:5000/api/rooms/getRooms?getMessagesByIdRoom
 app.use('/api/rooms', roomsRoutes);
+
+app.use('/api/auth', authRoutes);
 
 
 //sockets
@@ -141,6 +144,7 @@ io.on('connection', socket => {
             }
             console.log(`${socket.id} leaved from ${ConnectedRoomIdForServer} room`);
         }
+        userOnlineMethods.deleteUserOnline(UserNameForServer);
     });
     console.log(`User connected to socket ${socket.id}`);
 });

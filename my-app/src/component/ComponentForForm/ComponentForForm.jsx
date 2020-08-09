@@ -3,7 +3,7 @@ import css from "./ComponentForComponentStyle.module.css"
 
 
 export const ComponentForForm = ({input,meta, ...props}) => {
-    let hasError =  meta.touched && meta.error && meta.submitFailed;
+    let hasError =  meta.touched && meta.error;
     return  <>
         <>
             <input className={css.area + ' ' + (hasError?css.errortext:'')} type = {props.type} {...input} {...props}/>

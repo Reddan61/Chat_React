@@ -14,7 +14,7 @@ const Header: React.FC<mapStateToPropsType & mapDispatchToPropsType> = (props) =
     const logOut = () => {
         props.ChangeModeThunk(false,null);
         props.changeIsGettedRoomsThunk(false);
-        props.logOutThunk();
+        props.logOutThunk(props.user!);
     };
     return <div className={css.header}>
         <ul className={css.auth}>
@@ -43,7 +43,7 @@ export default compose(
 type mapStateToPropsType = ReturnType<typeof mapStateToProps>
 
 type mapDispatchToPropsType = {
-    logOutThunk: () => void,
+    logOutThunk: (name:string) => void,
     ChangeModeThunk: (bool: boolean,id:number | null) => void,
     changeIsGettedRoomsThunk: (bool:boolean) => void
 }

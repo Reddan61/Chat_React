@@ -53,7 +53,6 @@ module.exports.deleteUserFromRoomByName = (userName,roomid) => {
             let users = item.users.filter((el) => {
                 return el !== userName;
             });
-
             if(users.length === 0) {
                 rooms.splice(index,1);
             } else {
