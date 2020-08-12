@@ -25,7 +25,6 @@ const ChatWindow:React.FC<mapStateToPropsType & mapDispatchToPropsType> = (props
         socket.removeListener("JOINED:ROOM");
         socket.removeListener('GET:ROOMS');
         socket.removeListener('DELETE:ROOM');
-        socket.removeListener("GET:IMAGE");
 
         socket.on("LEAVE:CHATROOM", (data: {newUsers : Array<string>}) => {
             props.replaceNewUsers(data.newUsers);
