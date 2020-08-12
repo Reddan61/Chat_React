@@ -2,6 +2,7 @@ let rooms = [
    /* {
         id:0,
         nameRoom: 'Test',
+        imageSrc: "string"
         users: ['Dima', 'Danil'],
         messages: [{
             user: 'Dima',
@@ -58,6 +59,15 @@ module.exports.deleteUserFromRoomByName = (userName,roomid) => {
             } else {
                 item.users = users;
             }
+        }
+    });
+};
+
+
+module.exports.setImage = (id,imgSrc) => {
+    rooms.forEach(item => {
+        if(item.id === id) {
+            item.imageSrc = imgSrc;
         }
     });
 };

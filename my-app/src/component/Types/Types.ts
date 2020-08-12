@@ -8,6 +8,7 @@ export type messagesType = Array<{
 
 export type socketRoomsDataTypeObj = {
     id:number,
+    imageSrc?:string,
     nameRoom: string,
     users: Array<string>,
     messages: messagesType

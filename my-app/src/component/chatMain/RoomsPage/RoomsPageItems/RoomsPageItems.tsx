@@ -1,17 +1,14 @@
 import React, {useEffect} from "react";
 import {socketRoomsDataTypeObj} from "../../../Types/Types";
 import css from './StyleSideBarItem.module.css'
-import {compose} from "redux";
-import {connect} from "react-redux";
 import {StateType} from "../../../redux/store";
-import {ChangeModeThunk} from "../../../redux/ChatReducer/ChatReducer";
 
 
 const RoomsPageItems: React.FC<RoomPageItemsType & mapStateToPropsType & mapDispatchToProps> = (props) => {
     return <div className={css.RoomsPage__Item} >
         <div className={css.Item__Content}>
             <div className={css.Item__ImageRoom}>
-                <img src={"https://w7.pngwing.com/pngs/301/284/png-transparent-twilight-sparkle-pony-rarity-rainbow-dash-princess-celestia-my-little-pony-horse-purple-mammal.png"}/>
+                <img src={props.room.imageSrc?props.room.imageSrc:"https://filkiniada-4sc.ucoz.org/80781_3.jpg"}/>
             </div>
             <div className={css.Item__Right}>
                 <div className={css.Item__NameRoom}>

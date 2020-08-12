@@ -25,6 +25,7 @@ const ChatWindow:React.FC<mapStateToPropsType & mapDispatchToPropsType> = (props
         socket.removeListener("JOINED:ROOM");
         socket.removeListener('GET:ROOMS');
         socket.removeListener('DELETE:ROOM');
+        socket.removeListener("GET:IMAGE");
 
         socket.on("LEAVE:CHATROOM", (data: {newUsers : Array<string>}) => {
             props.replaceNewUsers(data.newUsers);
@@ -55,14 +56,26 @@ const ChatWindow:React.FC<mapStateToPropsType & mapDispatchToPropsType> = (props
             }})
     };
 
+    let changeNewImage = (e:any) => {
+        let file = e.target.files[0];
+        if(e.target.files.length && (file.type === 'image/jpeg' || file.type === 'image/png')) {
+            socket.emit("SET:IMAGE", {
+                file,
+                id:props.thisRoomId
+            })
+        }
+    };
+
     return <div className={css.ChatWindow}>
         <div className={css.ChatWindow__Left}>
             {props.users}
         </div>
         <div className={css.ChatWindow__Right}>
-            <div className={css.ChatWindow__Exit}>
+            <div className={css.ChatWindow__Header}>
+                <div className={css.Header__Settings}>
+                    <input type={'file'} onChange={changeNewImage}/>
+                </div>
                 <div className={css.ChatWindow__X} onClick={() => props.ChangeModeThunk(false,null)}>
-
                 </div>
             </div>
             <div className = {css.ChatWindow__Messages}>

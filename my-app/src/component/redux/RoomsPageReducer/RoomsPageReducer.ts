@@ -8,6 +8,7 @@ const AddUser = 'ADD_USER';
 const ChangeModeGetted = "CHANGE_IS_GETTED_ROOMS";
 const DeleteUserFromRoom = "DELETE_USER_FROM_ROOM";
 const DeleteRoom = "DELETE_ROOM";
+const SetImageByRoomId = "SET_IMAGE_BY_ROOM_ID";
 
 let initialState = {
     isGettedRooms: false,
@@ -57,6 +58,16 @@ const SideBarReducer = (state = initialState, action: ActionReducerTypes): initi
                 ...state,
                 rooms: state.rooms.filter((el) => el.id !== action.id)
             };
+            case "SET_IMAGE_BY_ROOM_ID":
+                return {
+                    ...state,
+                    rooms: state.rooms.map(item => {
+                        if(item.id === action.id) {
+                            item.imageSrc = action.imageSrc;
+                        }
+                        return item;
+                    })
+                };
         default:
             return state
     }
@@ -69,7 +80,8 @@ let actionsRoomPage = {
     addUserToRoomAC: (payload: { id: number, userName: string }) => ({type: AddUser, payload} as const),
     changeIsGettedRoomsAC: (bool: boolean) => ({type: ChangeModeGetted, bool} as const),
     deleteUserFromRoomAC: (id: number, newUsers: Array<string>) => ({type: DeleteUserFromRoom, id, newUsers} as const),
-    deleteRoomAC: (id: number) => ({type: DeleteRoom, id} as const)
+    deleteRoomAC: (id: number) => ({type: DeleteRoom, id} as const),
+    setImageByRoomIdAC: (id:number,imageSrc:string) => ({type:SetImageByRoomId,id,imageSrc} as const)
 };
 
 export const addRoomThunk = (newRoom: socketRoomsDataTypeObj): ThunkActionType<ActionReducerTypes> => {
@@ -107,6 +119,12 @@ export const deleteUserFromRoomThunk = (id: number, newUsers: Array<string>): Th
 export const deleteRoomThunk = (id: number): ThunkActionType<ActionReducerTypes> => {
     return async (dispatch) => {
         dispatch(actionsRoomPage.deleteRoomAC(id));
+    }
+};
+
+export const setImageByRoomIdThunk = (id:number,imageSrc:string): ThunkActionType<ActionReducerTypes> => {
+    return async (dispatch) => {
+        dispatch(actionsRoomPage.setImageByRoomIdAC(id,imageSrc))
     }
 };
 

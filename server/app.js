@@ -9,6 +9,9 @@ const bodyParser = require('body-parser');
 const cors = require('cors');
 const morgan = require('morgan');
 const keys = require("./config/keys");
+const fs = require('fs');
+const moment = require("moment");
+const path = require("path");
 
 const http = require('http').createServer(app);
 const io = require('socket.io')(http);
@@ -51,12 +54,26 @@ app.use('/api/rooms', roomsRoutes);
 app.use('/api/auth', authRoutes);
 
 
+app.use('/uploads',express.static('uploads'));
 //sockets
 //Подключение именно к сокетам
 
 io.on('connection', socket => {
     let ConnectedRoomIdForServer = null;
     let UserNameForServer = null;
+
+    socket.on("SET:IMAGE", async (data) => {
+        console.log(data.file);
+        const date = moment().format("DDMMYYYY-HHmmss_SSS");
+        let nameFile = date + "-" + data.id;
+
+
+        fs.writeFileSync(`uploads/${nameFile}.jpeg`, data.file);
+
+        roomMethods.setImage(data.id,`http://localhost:5000/uploads/${nameFile}.jpeg`);
+
+        io.sockets.emit("GET:IMAGE",{imageSrc:`http://localhost:5000/uploads/${nameFile}.jpeg`,id:data.id})
+    });
 
     socket.on("SET:MAINROOM", (data) => {
         UserNameForServer = data.userName;

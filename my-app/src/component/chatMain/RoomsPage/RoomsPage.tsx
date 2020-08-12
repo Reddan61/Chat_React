@@ -10,7 +10,7 @@ import {
     addRoomThunk,
     addUserToRoomThunk,
     deleteRoomThunk,
-    deleteUserFromRoomThunk
+    deleteUserFromRoomThunk, setImageByRoomIdThunk
 } from "../../redux/RoomsPageReducer/RoomsPageReducer";
 import CreateRoom from "../../PopUp/CreateRoom/CreateRoom";
 import {TransitionGroup, CSSTransition} from "react-transition-group"
@@ -31,6 +31,11 @@ const RoomsPage: React.FC<MapStateToPropsType & MapDispatchToPropsType> = (props
         //Отвечает за динамическое получение НОВЫХ комнат
         socket.on('GET:ROOMS', (data: socketRoomsDataTypeObj) => {
             props.addRoomThunk(data);
+        });
+
+        //Обновление картинки комнаты
+        socket.on("GET:IMAGE", (data:{imageSrc:string,id:number}) => {
+            props.setImageByRoomIdThunk(data.id,data.imageSrc);
         });
 
         //Изменения онлайна при выходе user
@@ -98,7 +103,7 @@ let mapStateToProps = (state: StateType) => {
 export default compose(
     connect(mapStateToProps, {
         addRoomThunk,addUserToRoomThunk,ChangeModeThunk,
-        deleteUserFromRoomThunk, deleteRoomThunk})
+        deleteUserFromRoomThunk, deleteRoomThunk, setImageByRoomIdThunk})
 )(RoomsPage);
 
 
@@ -109,5 +114,6 @@ type MapDispatchToPropsType = {
     addUserToRoomThunk: (id: number, userName: string) => void,
     ChangeModeThunk: (bool: boolean, id: number | null) => void,
     deleteUserFromRoomThunk: (id: number, newUsers: Array<string>) => void,
-    deleteRoomThunk: (id:number) => void
+    deleteRoomThunk: (id:number) => void,
+    setImageByRoomIdThunk: (id:number,imageSrc:string) => void
 }

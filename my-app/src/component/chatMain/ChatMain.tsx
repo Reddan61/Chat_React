@@ -20,6 +20,7 @@ const ChatMain: React.FC<MapStateToPropsType & MapDispatchToPropsType> = (props)
             socket.removeListener('GET:ROOMS');
             socket.removeListener('ToOwner:ROOM');
             socket.removeListener('DELETE:ROOM');
+            socket.removeListener("GET:IMAGE");
         }
     }, []);
 
