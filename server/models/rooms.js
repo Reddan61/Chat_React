@@ -1,3 +1,5 @@
+const fs = require('fs');
+
 let rooms = [
    /* {
         id:0,
@@ -55,6 +57,12 @@ module.exports.deleteUserFromRoomByName = (userName,roomid) => {
                 return el !== userName;
             });
             if(users.length === 0) {
+                if(rooms[index].imageSrc){
+                    let number = rooms[index].imageSrc.lastIndexOf('/') + 1;
+                    fs.unlinkSync(`uploads/${rooms[index].imageSrc.slice(number, rooms[index].imageSrc.length)}`, (e) => {
+                        console.log(e);
+                    });
+                }
                 rooms.splice(index,1);
             } else {
                 item.users = users;
