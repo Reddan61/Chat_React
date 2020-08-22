@@ -1,14 +1,12 @@
 .ChatWindow {
   display: flex;
-  grid-area: ChatWindow;
-  min-height: 800px;
-  max-height: 800px;
+  width: inherit;
+  height: inherit;
   justify-content: center;
 }
 .ChatWindow__Left {
   width: 300px;
-  min-height: inherit;
-  max-height: inherit;
+  height: 800px;
   background-color: #7da7f1;
   overflow-y: auto;
   overflow-x: hidden;
@@ -23,8 +21,37 @@
   flex-direction: column;
   margin-left: 30px;
   width: 1200px;
-  min-height: inherit;
-  max-height: inherit;
+  height: inherit;
+}
+.ChatWindow__ShowOnline {
+  align-self: flex-end;
+  background-color: blue;
+  width: 40px;
+  height: 60px;
+  position: relative;
+  justify-content: center;
+  align-items: center;
+  display: none;
+}
+.ChatWindow__ShowOnline span {
+  position: absolute;
+  width: 10px;
+  height: 10px;
+  background-color: white;
+}
+.ChatWindow__ShowOnline:after,
+.ChatWindow__ShowOnline:before {
+  position: absolute;
+  content: "";
+  width: 10px;
+  height: 10px;
+  background-color: white;
+}
+.ChatWindow__ShowOnline:after {
+  top: 40px;
+}
+.ChatWindow__ShowOnline:before {
+  top: 10px;
 }
 .ChatWindow__Messages {
   padding-left: 15px;
@@ -44,15 +71,14 @@
 .ChatWindow__SendMessage textarea {
   width: 400px;
   height: 100px;
-  max-height: 100px;
   resize: none;
   overflow-y: auto;
   font-size: 20px;
 }
 .ChatWindow__SendMessage button {
   position: absolute;
-  margin-top: 50px;
-  margin-left: 10px;
+  top: 60px;
+  margin-left: 5px;
   width: 200px;
   height: 50px;
   background-color: #3674ff;
@@ -69,7 +95,7 @@
 .ChatWindow__Header {
   display: flex;
   position: relative;
-  width: inherit;
+  min-width: inherit;
   border-bottom: 2px solid #94a6f1;
   height: 50px;
 }
@@ -96,5 +122,64 @@
 }
 .ChatWindow__X:before {
   transform: rotate(-45deg);
+}
+@media (max-width: 1770px) {
+  .ChatWindow__Right {
+    width: 1100px;
+  }
+  .ChatWindow {
+    width: 1500px;
+  }
+}
+@media (max-width: 1500px) {
+  .ChatWindow__Right {
+    width: 900px;
+  }
+  .ChatWindow {
+    width: 1300px;
+  }
+}
+@media (max-width: 1400px) {
+  .ChatWindow__Right {
+    width: 700px;
+  }
+  .ChatWindow {
+    width: 1100px;
+  }
+}
+@media (max-width: 1100px) {
+  .ChatWindow__Right {
+    width: 600px;
+  }
+  .ChatWindow {
+    width: 1000px;
+  }
+}
+@media (max-width: 1000px) {
+  .ChatWindow__Right {
+    width: 500px;
+  }
+  .ChatWindow {
+    width: 900px;
+  }
+  .ChatWindow__SendMessage {
+    display: flex;
+    flex-direction: column;
+  }
+  .ChatWindow__SendMessage button {
+    top: 95px;
+    margin-left: 0;
+  }
+  .ChatWindow__Messages {
+    height: 500px;
+  }
+}
+@media (max-width: 900px) {
+  .ChatWindow__Left {
+    display: none;
+  }
+  .ChatWindow__ShowOnline {
+    display: flex;
+  }
 }
 /*# sourceMappingURL=StyleChatWindow.module.css.map */

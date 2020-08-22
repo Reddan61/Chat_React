@@ -1,12 +1,11 @@
 .RoomPage__items {
+  min-height: 400px;
   display: flex;
-  flex-direction: row;
   flex-wrap: wrap;
-  padding: -5px 5px;
-  min-height: inherit;
+  min-width: 100%;
 }
 .RoomPage {
-  min-height: 700px;
-  max-height: 700px;
+  height: 700px;
+  margin-left: 20px;
 }
 /*# sourceMappingURL=styleSideBar.module.css.map */

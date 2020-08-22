@@ -66,8 +66,12 @@ const ChatWindow:React.FC<mapStateToPropsType & mapDispatchToPropsType> = (props
     };
 
     return <div className={css.ChatWindow}>
-        <div className={css.ChatWindow__Left}>
-            {props.users}
+        <div>
+            <div className={css.ChatWindow__ShowOnline}> <span></span></div>
+            <div  className={css.ChatWindow__Left}>
+                {props.users}
+            </div>
+
         </div>
         <div className={css.ChatWindow__Right}>
             <div className={css.ChatWindow__Header}>

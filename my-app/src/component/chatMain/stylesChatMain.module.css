@@ -1,9 +1,11 @@
 .BodyChat__items {
   margin: 0 auto;
-  max-width: 1660px;
+  width: 1660px;
+  height: inherit;
 }
 .BodyChat {
   grid-area: BodyChat;
+  height: 800px;
   margin-top: 10px;
 }
 /*# sourceMappingURL=stylesChatMain.module.css.map */
