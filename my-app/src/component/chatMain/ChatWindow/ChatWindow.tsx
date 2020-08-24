@@ -17,6 +17,7 @@ import ChatUsersOnlineItems from "./ChatMessagesItem/ChatUsersOnlineItems";
 
 const ChatWindow:React.FC<mapStateToPropsType & mapDispatchToPropsType> = (props) => {
     let [myMessage,ChangeMessage] = useState('');
+    let [active,changeActive] = useState(false);
 
     let ChangeInputMessage = (e:any) => {
         ChangeMessage(e.target.value);
@@ -67,8 +68,11 @@ const ChatWindow:React.FC<mapStateToPropsType & mapDispatchToPropsType> = (props
 
     return <div className={css.ChatWindow}>
         <div>
-            <div className={css.ChatWindow__ShowOnline}> <span></span></div>
-            <div  className={css.ChatWindow__Left}>
+            <div onClick={() => {
+                console.log('da');
+                changeActive(!active);
+            }} className={css.ChatWindow__ShowOnline}> <span></span></div>
+            <div className={active?css.ChatWindow__Left_active:css.ChatWindow__Left}>
                 {props.users}
             </div>
 

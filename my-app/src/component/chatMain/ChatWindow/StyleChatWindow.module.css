@@ -1,8 +1,9 @@
 .ChatWindow {
   display: flex;
-  width: inherit;
+  width: 100%;
   height: inherit;
   justify-content: center;
+  min-width: 600px;
 }
 .ChatWindow__Left {
   width: 300px;
@@ -14,49 +15,47 @@
   align-items: center;
   flex-direction: column;
   border-radius: 10px;
-  padding-top: -20px;
 }
 .ChatWindow__Right {
   display: flex;
   flex-direction: column;
   margin-left: 30px;
-  width: 1200px;
+  width: 50%;
   height: inherit;
 }
 .ChatWindow__ShowOnline {
   align-self: flex-end;
-  background-color: blue;
-  width: 40px;
+  width: 60px;
   height: 60px;
   position: relative;
+  top: -7px;
   justify-content: center;
   align-items: center;
   display: none;
+  cursor: pointer;
 }
 .ChatWindow__ShowOnline span {
   position: absolute;
-  width: 10px;
-  height: 10px;
-  background-color: white;
+  width: 30px;
+  height: 4px;
+  background-color: black;
 }
 .ChatWindow__ShowOnline:after,
 .ChatWindow__ShowOnline:before {
   position: absolute;
   content: "";
-  width: 10px;
-  height: 10px;
-  background-color: white;
+  width: 30px;
+  height: 4px;
+  background-color: black;
 }
 .ChatWindow__ShowOnline:after {
   top: 40px;
 }
 .ChatWindow__ShowOnline:before {
-  top: 10px;
+  top: 16px;
 }
 .ChatWindow__Messages {
   padding-left: 15px;
-  padding-top: -20px;
-  width: inherit;
   height: 600px;
   overflow-y: auto;
   overflow-x: hidden;
@@ -64,7 +63,6 @@
 .ChatWindow__SendMessage {
   position: relative;
   border-top: 1px solid #94a6f1;
-  width: inherit;
   height: 100px;
   padding: 10px;
 }
@@ -123,45 +121,7 @@
 .ChatWindow__X:before {
   transform: rotate(-45deg);
 }
-@media (max-width: 1770px) {
-  .ChatWindow__Right {
-    width: 1100px;
-  }
-  .ChatWindow {
-    width: 1500px;
-  }
-}
-@media (max-width: 1500px) {
-  .ChatWindow__Right {
-    width: 900px;
-  }
-  .ChatWindow {
-    width: 1300px;
-  }
-}
-@media (max-width: 1400px) {
-  .ChatWindow__Right {
-    width: 700px;
-  }
-  .ChatWindow {
-    width: 1100px;
-  }
-}
-@media (max-width: 1100px) {
-  .ChatWindow__Right {
-    width: 600px;
-  }
-  .ChatWindow {
-    width: 1000px;
-  }
-}
 @media (max-width: 1000px) {
-  .ChatWindow__Right {
-    width: 500px;
-  }
-  .ChatWindow {
-    width: 900px;
-  }
   .ChatWindow__SendMessage {
     display: flex;
     flex-direction: column;
@@ -178,8 +138,34 @@
   .ChatWindow__Left {
     display: none;
   }
+  .ChatWindow__Left_active {
+    margin: 5px 0;
+    position: absolute;
+    width: 550px;
+    padding-bottom: 10px;
+    background-color: dimgray;
+    overflow-y: auto;
+    overflow-x: hidden;
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+    border-radius: 10px;
+  }
   .ChatWindow__ShowOnline {
     display: flex;
+  }
+}
+@media (max-width: 800px) {
+  .ChatWindow {
+    justify-content: flex-start;
+    width: auto;
+    padding-left: 10px;
+  }
+  .ChatWindow__Right {
+    width: 70%;
+  }
+  .ChatWindow__Messages {
+    padding: 0;
   }
 }
 /*# sourceMappingURL=StyleChatWindow.module.css.map */

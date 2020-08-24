@@ -1,1 +1,1 @@
-{"version":3,"sources":["stylesChatMain.module.less"],"names":[],"mappings":"AAGA;EACE,cAAA;EACA,aAAA;EACA,eAAA;;AAGF;EACE,mBAAA;EACA,aAAA;EACA,gBAAA","file":"stylesChatMain.module.css"}
+{"version":3,"sources":["stylesChatMain.module.less"],"names":[],"mappings":"AAGA;EACE,cAAA;EACA,sBAAA;EACA,eAAA;;AAGF;EACE,WAAA;EACA,aAAA;EACA,gBAAA","file":"stylesChatMain.module.css"}

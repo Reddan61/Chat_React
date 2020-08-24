@@ -4,9 +4,8 @@
   box-sizing: border-box;
 }
 .body {
-  display: grid;
-  grid-template-areas: 'header' 'BodyChat';
-  grid-row-gap: 50px;
+  display: flex;
+  flex-direction: column;
 }
 .option-enter {
   opacity: 0;
