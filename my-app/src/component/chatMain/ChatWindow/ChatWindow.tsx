@@ -13,6 +13,7 @@ import {
     replaceNewUsers
 } from "../../redux/ChatReducer/ChatReducer";
 import ChatUsersOnlineItems from "./ChatMessagesItem/ChatUsersOnlineItems";
+import {changeIsGettedRoomsThunk} from "../../redux/RoomsPageReducer/RoomsPageReducer";
 
 
 const ChatWindow:React.FC<mapStateToPropsType & mapDispatchToPropsType> = (props) => {
@@ -46,6 +47,7 @@ const ChatWindow:React.FC<mapStateToPropsType & mapDispatchToPropsType> = (props
             socket.emit("LEAVE:CHATROOM", {id:props.thisRoomId,userName:props.userName});
             socket.removeListener("GET:MESSAGE");
             socket.removeListener("ADDUSER:ROOM");
+            props.changeIsGettedRoomsThunk(false);
         }
     },[]);
 
@@ -69,7 +71,6 @@ const ChatWindow:React.FC<mapStateToPropsType & mapDispatchToPropsType> = (props
     return <div className={css.ChatWindow}>
         <div>
             <div onClick={() => {
-                console.log('da');
                 changeActive(!active);
             }} className={css.ChatWindow__ShowOnline}> <span></span></div>
             <div className={active?css.ChatWindow__Left_active:css.ChatWindow__Left}>
@@ -82,7 +83,10 @@ const ChatWindow:React.FC<mapStateToPropsType & mapDispatchToPropsType> = (props
                 <div className={css.Header__Settings}>
                     <input type={'file'} onChange={changeNewImage}/>
                 </div>
-                <div className={css.ChatWindow__X} onClick={() => props.ChangeModeThunk(false,null)}>
+                <div className={css.ChatWindow__X} onClick={() => {
+
+                    props.ChangeModeThunk(false,null)
+                }}>
                 </div>
             </div>
             <div className = {css.ChatWindow__Messages}>
@@ -107,7 +111,7 @@ let mapStateToProps = (state:StateType) => {
 };
 
 export default compose(
-    connect(mapStateToProps, {addNewMessageThunk,addNewUserThunk, ChangeModeThunk, replaceNewUsers})
+    connect(mapStateToProps, {addNewMessageThunk,addNewUserThunk, ChangeModeThunk, replaceNewUsers,changeIsGettedRoomsThunk})
 )(ChatWindow);
 
 
@@ -117,5 +121,6 @@ type mapDispatchToPropsType = {
     addNewMessageThunk: (message:messagesType) => void
     addNewUserThunk: (user:string) => void,
     ChangeModeThunk: (bool:boolean,id:number | null) => void,
-    replaceNewUsers: (newUsers: Array<string>) => void
+    replaceNewUsers: (newUsers: Array<string>) => void,
+    changeIsGettedRoomsThunk: (bool:boolean) => void
 }

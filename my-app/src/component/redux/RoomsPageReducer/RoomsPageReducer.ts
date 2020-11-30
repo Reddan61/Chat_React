@@ -90,7 +90,7 @@ export const addRoomThunk = (newRoom: socketRoomsDataTypeObj): ThunkActionType<A
     }
 };
 
-export const getFirstTimeRoomsThunk = (): ThunkActionType<ActionReducerTypes> => {
+export const getRoomsThunk = (): ThunkActionType<ActionReducerTypes> => {
     return async (dispatch) => {
         let response = await roomsAPI.getRooms();
         dispatch(actionsRoomPage.getRoomsAC(response));

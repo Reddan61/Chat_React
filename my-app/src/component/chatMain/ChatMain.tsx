@@ -5,7 +5,7 @@ import {compose} from "redux";
 import {WithAuthRedirect} from "../HOC/withAuthRedirect";
 import ChatWindow from "./ChatWindow/ChatWindow";
 import {connect} from "react-redux";
-import {getFirstTimeRoomsThunk} from "../redux/RoomsPageReducer/RoomsPageReducer";
+import {getRoomsThunk} from "../redux/RoomsPageReducer/RoomsPageReducer";
 import {StateType} from "../redux/store";
 import Loader from "../loader/loader";
 import socket from "../sockets/sockets";
@@ -26,7 +26,7 @@ const ChatMain: React.FC<MapStateToPropsType & MapDispatchToPropsType> = (props)
 
 
     if (!props.isGettedRooms) {
-        props.getFirstTimeRoomsThunk();
+        props.getRoomsThunk();
         return <div>
             <Loader/>
         </div>
@@ -47,12 +47,12 @@ let mapStateToProps = (state: StateType) => {
 
 export default compose(
     WithAuthRedirect,
-    connect(mapStateToProps, {getFirstTimeRoomsThunk})
+    connect(mapStateToProps, {getRoomsThunk})
 )
 (ChatMain);
 
 type MapStateToPropsType = ReturnType<typeof mapStateToProps>
 
 type MapDispatchToPropsType = {
-    getFirstTimeRoomsThunk: () => void
+    getRoomsThunk: () => void
 }
